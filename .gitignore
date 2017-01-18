@@ -1,0 +1,11 @@
+*.pyc
+.eggs
+.venv
+*.egg-info
+.idea
+.cache
+*.pyo
+build
+.tox
+report.xml
+.eggs
