@@ -22,11 +22,17 @@ from utils.disk_utils import DiskIO
 
 class TestDisk:
 
-    @staticmethod
-    def all_free_disk_space_gb():
-        return reduce(lambda res, x: res+x[1], DiskIO().disks, 0)
-
     @pytest.mark.disk
     @pytest.mark.storage
     def test_disk_space_storage(self):
-        assert self.all_free_disk_space_gb() > 3000
+        assert DiskIO().all_free_disk_space_gb() > 3000
+
+    @pytest.mark.disk
+    @pytest.mark.workstation
+    def test_disk_space_ws(self):
+        assert DiskIO().all_free_disk_space_gb() > 50
+
+    @pytest.mark.disk
+    @pytest.mark.mailserver
+    def test_disk_space_mailserver(self):
+        assert DiskIO().all_free_disk_space_gb() > 1000

@@ -26,6 +26,9 @@ if float(sys.version[:3]) >= 3.3:
 else:
     from time import time
 
+if float(sys.version[:2]) >= 3:
+    from functools import reduce
+
 
 class DiskIO(object):
 
@@ -93,3 +96,6 @@ class DiskIO(object):
                     break  # if EOF reached
                 took.append(t)
         return took
+
+    def all_free_disk_space_gb(self):
+        return reduce(lambda res, x: res+x[1]/1024, self.disks, 0)
