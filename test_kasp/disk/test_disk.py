@@ -22,11 +22,6 @@ from utils.disk_utils import DiskIO
 
 class TestDisk:
 
-    def __init__(self):
-        self.WRITE_MB = 128
-        self.WRITE_BLOCK_KB = 1024
-        self.READ_BLOCK_B = 512
-
     @staticmethod
     def all_free_disk_space_gb():
         return reduce(lambda res, x: res+x[1], DiskIO().disks, 0)
