@@ -1,5 +1,6 @@
 pytest==3.0.4
 junit-xml
-# guppy
+psutil
+
 # verification
 tox==2.4.1
