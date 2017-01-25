@@ -30,9 +30,30 @@ class TestDisk:
     @pytest.mark.disk
     @pytest.mark.workstation
     def test_disk_space_ws(self):
-        assert DiskIO().all_free_disk_space_gb() > 50
+        assert DiskIO().all_free_disk_space_gb() > 30
 
     @pytest.mark.disk
     @pytest.mark.mailserver
     def test_disk_space_mailserver(self):
         assert DiskIO().all_free_disk_space_gb() > 1000
+
+    @pytest.mark.disk
+    @pytest.mark.storage
+    def test_io_storage(self):
+        io = DiskIO().io_calculate()
+        assert io[0] > 200
+        assert io[1] > 200
+
+    @pytest.mark.disk
+    @pytest.mark.workstation
+    def test_io_ws(self):
+        io = DiskIO().io_calculate()
+        assert io[0] > 100
+        assert io[1] > 100
+
+    @pytest.mark.disk
+    @pytest.mark.mailserver
+    def test_io_mailserver(self):
+        io = DiskIO().io_calculate()
+        assert io[0] > 150
+        assert io[1] > 150
